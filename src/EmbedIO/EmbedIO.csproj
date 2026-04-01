@@ -7,7 +7,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>EmbedIO</AssemblyName>
-    <PackageId>EmbedIO</PackageId>
+    <PackageId>EmbedIoNew</PackageId>
     <Product>EmbedIO</Product>
     <Company>Unosquare</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -16,6 +16,8 @@
     <RepositoryUrl>https://github.com/unosquare/embedio/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>webserver websocket webapi http</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>3.5.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release' And Exists('NugetSigning.pfx')">

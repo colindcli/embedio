@@ -7,6 +7,8 @@ namespace EmbedIO.Net.Internal
         public ListenerPrefix(string uri)
         {
             var ur = new Uri(uri);
+            if (ur == null)
+                throw new ArgumentException("Invalid prefix.");
 
             if (uri.StartsWith("https://", StringComparison.Ordinal))
             {
