@@ -139,7 +139,7 @@ namespace EmbedIO.Net.Internal
         }
 
         internal bool HeadersSent { get; set; }
-        
+
         void IDisposable.Dispose() => Close(true);
 
         public void Close()
@@ -177,11 +177,13 @@ namespace EmbedIO.Net.Internal
         {
             if (_contentType != null)
             {
-                var contentTypeValue = _contentType.IndexOf("charset=", StringComparison.Ordinal) == -1
-                    ? $"{_contentType}; charset={WebServer.DefaultEncoding.WebName}"
-                    : _contentType;
+                //var contentTypeValue = _contentType.IndexOf("charset=", StringComparison.Ordinal) == -1
+                //    ? $"{_contentType}; charset={WebServer.DefaultEncoding.WebName}"
+                //    : _contentType;
+                //Headers.Add(HttpHeaderNames.ContentType, contentTypeValue);
 
-                Headers.Add(HttpHeaderNames.ContentType, contentTypeValue);
+                //不能随便添加charset，否则会导致其他编码乱码
+                Headers.Add(HttpHeaderNames.ContentType, _contentType);
             }
 
             if (Headers[HttpHeaderNames.Server] == null)
@@ -210,7 +212,7 @@ namespace EmbedIO.Net.Internal
                                      && Headers.ContainsKey(HttpHeaderNames.ContentLength)
                                      && long.TryParse(Headers[HttpHeaderNames.ContentLength], out var contentLength)
                                      && contentLength >= 0L;
-            
+
                 if (!haveContentLength)
                 {
                     Headers.Remove(HttpHeaderNames.ContentLength);
